@@ -1,0 +1,27 @@
+name: Build Kernel
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v3
+
+      - name: Setup Environment
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential bc libssl-dev git bison flex gcc-aarch64-linux-gnu libncurses5-dev
+
+      - name: Build Kernel
+        run: |
+          export ARCH=arm64
+          export CROSS_COMPILE=aarch64-linux-gnu-
+          
+          # J7 Core (Exynos 7870) အတွက် defconfig ဖော်ထုတ်ခြင်း (ဖိုင်နာမည်အမှန်အတိုင်း ပြင်ရန်လိုနိုင်သည်)
+          make j7velte_eur_open_defconfig
+          
+          # Compile စတင်ခြင်း
+          make -j$(nproc)
