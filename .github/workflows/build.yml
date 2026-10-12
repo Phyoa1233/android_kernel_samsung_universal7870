@@ -20,8 +20,8 @@ jobs:
           export ARCH=arm64
           export CROSS_COMPILE=aarch64-linux-gnu-
           
-          # J7 Core (Exynos 7870) အတွက် defconfig ဖော်ထုတ်ခြင်း (ဖိုင်နာမည်အမှန်အတိုင်း ပြင်ရန်လိုနိုင်သည်)
-          make j7velte_eur_open_defconfig
+          # J7 Core (Exynos 7870) defconfig ကို ဤနေရာတွင် ထည့်ပါ
+          make exynos7870-j7velte_defconfig
           
-          # Compile စတင်ခြင်း
+          # Kernel စတင်တည်ဆောက်ခြင်း
           make -j$(nproc)
