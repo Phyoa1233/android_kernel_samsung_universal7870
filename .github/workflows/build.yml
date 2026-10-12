@@ -19,14 +19,8 @@ jobs:
         run: |
           export ARCH=arm64
           export CROSS_COMPILE=aarch64-linux-gnu-
-          export HOSTCFLAGS="-fcommon"
+          export HOSTCFLAGS="-fcommon -Wno-error"
           export CFLAGS="-fcommon"
           
-          # DTC compiler အတွက်ပါ -fcommon ထည့်ခြင်း
-          make -C scripts/dtc HOSTCFLAGS="-fcommon" || true
-          
-          # Defconfig ဖြင့် Config တည်ဆောက်ခြင်း
           make exynos7870-gtaxllte_defconfig
-          
-          # Kernel စတင်တည်ဆောက်ခြင်း
           make -j$(nproc)
