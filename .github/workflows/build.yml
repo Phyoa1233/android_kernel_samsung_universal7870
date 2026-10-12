@@ -23,11 +23,11 @@ jobs:
           export HOSTCXX=g++-10
           export CC=gcc-10
           
-          # ၁။ လိုအပ်သော host scripts များနှင့် dtc ဖိုင်များကို အရင် တည်ဆောက်ခြင်း
-          make scripts
-          
-          # ၂။ Defconfig ထည့်သွင်းခြင်း
+          # ၁။ Defconfig ကို ဦးစွာ အရင် Run ပါ (ဒါမှ .config ဖိုင် အရင်ထွက်လာပါမယ်)
           make exynos7870-gtaxllte_defconfig
           
-          # ၃။ Kernel ကို စတင်တည်ဆောက်ခြင်း
+          # ၂။ ထို့နောက် လိုအပ်သော scripts များကို တည်ဆောက်ပါ
+          make scripts
+          
+          # ၃။ Kernel ကို အပြည့်အစုံ စတင် Build ပါ
           make -j$(nproc)
