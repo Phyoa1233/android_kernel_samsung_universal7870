@@ -22,7 +22,10 @@ jobs:
           export HOSTCFLAGS="-fcommon"
           export CFLAGS="-fcommon"
           
-          # Exynos 7870 config ဖြင့် စမ်းသပ်ခြင်း
+          # DTC compiler အတွက်ပါ -fcommon ထည့်ခြင်း
+          make -C scripts/dtc HOSTCFLAGS="-fcommon" || true
+          
+          # Defconfig ဖြင့် Config တည်ဆောက်ခြင်း
           make exynos7870-gtaxllte_defconfig
           
           # Kernel စတင်တည်ဆောက်ခြင်း
