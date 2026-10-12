@@ -23,5 +23,11 @@ jobs:
           export HOSTCXX=g++-10
           export CC=gcc-10
           
+          # DTC ဖိုင်ဟောင်းများကို ရှင်းလင်းခြင်းဖြင့် yylloc error ကို ကျော်လွှားရန်
+          make clean -C scripts/dtc
+          
+          # Exynos 7870 config ဖြင့် စမ်းသပ်ခြင်း
           make exynos7870-gtaxllte_defconfig
+          
+          # Kernel စတင်တည်ဆောက်ခြင်း
           make -j$(nproc)
