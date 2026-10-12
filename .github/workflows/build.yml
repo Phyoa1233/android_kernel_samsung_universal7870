@@ -23,5 +23,8 @@ jobs:
           export HOSTCXX=g++-10
           export CC=gcc-10
           
+          # DTC lexer error ကိုကျော်လွှားရန် host dtc files များကို အရင် clean လုပ်ခြင်း
+          make clean
+          
           make exynos7870-gtaxllte_defconfig
           make -j$(nproc)
